@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAIR WELL </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .scene {
+      width: 300px;
+      height: 300px;
+      perspective: 800px;
+    }
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .face {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      border: 2px solid #333;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+    }
+    .face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .front  { transform: rotateY(0deg) translateZ(150px); }
+    .back   { transform: rotateY(180deg) translateZ(150px); }
+    .right  { transform: rotateY(90deg) translateZ(150px); }
+    .left   { transform: rotateY(-90deg) translateZ(150px); }
+    .top    { transform: rotateX(90deg) translateZ(150px); }
+    .bottom { transform: rotateX(-90deg) translateZ(150px); }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 id="lwords">we are contributing this to our bro Eugene</h1>
+      </header>
+      <main>
+        <div class="scene">
+          <div class="cube" id="cube">
+            <div class="face front"><img id="img-front" src="WhatsApp Image 2025-10-01 at 11.49.10_a0d3a998.jpg" alt="Front"></div>
+            <div class="face back"><img id="img-back" src="WhatsApp Image 2025-10-01 at 11.49.15_faa0b156.jpg" alt="Back"></div>
+            <div class="face right"><img id="img-right" src="WhatsApp Image 2025-10-01 at 11.49.16_fd261b81.jpg" alt="Right"></div>
+            <div class="face left"><img id="img-left" src="WhatsApp Image 2025-10-01 at 11.49.17_dc40a44a.jpg" alt="Left"></div>
+            <div class="face top"><img id="img-top" src="WhatsApp Image 2025-10-01 at 12.04.30_e6f147e5.jpg" alt="Top"></div>
+            <div class="face bottom"><img id="img-bottom" src="WhatsApp Image 2025-10-01 at 12.04.30_eaf6304a.jpg" alt="Bottom"></div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <p id="copyright">&copy; 2025 Eugene. All rights reserved.</p>
+      </footer>
+    </div>
+
+    </script>
+
+    <script>
+      const images = [
+        "WhatsApp Image 2025-10-01 at 11.49.10_a0d3a998.jpg",
+        "WhatsApp Image 2025-10-01 at 11.49.15_faa0b156.jpg",
+        "WhatsApp Image 2025-10-01 at 11.49.16_fd261b81.jpg",        
+        "WhatsApp Image 2025-10-01 at 11.49.17_dc40a44a.jpg",
+        "WhatsApp Image 2025-10-01 at 12.04.30_e6f147e5.jpg",
+        "WhatsApp Image 2025-10-01 at 12.04.30_eaf6304a.jpg",
+        "WhatsApp Image 2025-10-01 at 12.04.33_97152ae6.jpg"
+      ];
+      const faceIds = [
+        "img-front",
+        "img-back",
+        "img-right",
+        "img-left",
+        "img-top",
+        "img-bottom"
+      ];
+
+      let angleY = 0;
+      let angleX = 0;
+      let imgIndex = 0;
+
+      function rotateCube() {
+        angleY += 90;
+        if (angleY % 360 === 0) {
+          angleX += 90;
+        }
+        document.getElementById('cube').style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg)`;
+      }
+
+      function changePhotos() {
+        imgIndex = (imgIndex + 1) % images.length;
+        faceIds.forEach((id, i) => {
+          const img = document.getElementById(id);
+          img.src = images[(imgIndex + i) % images.length];
+        });
+      }
+
+      setInterval(() => {
+        rotateCube();
+        changePhotos();
+      }, 2000); // Change every 2 seconds
+    </script>
+  </body>
+  </html>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #222;
+      min-height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 32px 0 16px 0;
+      color: #fff;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .scene {
+      width: 300px;
+      height: 300px;
+      perspective: 800px;
+    }
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .face {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      border: 2px solid #333;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+    }
+    .face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .front  { transform: rotateY(0deg) translateZ(150px); }
+    .back   { transform: rotateY(180deg) translateZ(150px); }
+    .right  { transform: rotateY(90deg) translateZ(150px); }
+    .left   { transform: rotateY(-90deg) translateZ(150px); }
+    .top    { transform: rotateX(90deg) translateZ(150px); }
+    .bottom { transform: rotateX(-90deg) translateZ(150px); }
+    footer {
+      text-align: center;
+      color: #aaa;
+      padding: 16px 0 32px 0;
+      font-size: 1em;
+    }
+  </style>
+  <footer>
+    <p>© send to this number 0720505557</p>
+  </footer>
+</body>
+</html>
